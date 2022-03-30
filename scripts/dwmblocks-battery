@@ -1,0 +1,50 @@
+#!/bin/sh
+
+CHARGING=""
+
+get_symbol() {
+    if [ "$2" = "indeed" ]; then
+        echo $CHARGING
+    else 
+        if [ "$1" -ge 0 ] && [ "$1" -le 4 ]; then
+            echo ""
+        elif [ "$1" -ge 5 ] && [ "$1" -le 14 ]; then
+            echo ""
+        elif [ "$1" -ge 15 ] && [ "$1" -le 24 ]; then
+            echo ""
+        elif [ "$1" -ge 25 ] && [ "$1" -le 34 ]; then
+            echo ""
+        elif [ "$1" -ge 35 ] && [ "$1" -le 44 ]; then
+            echo ""
+        elif [ "$1" -ge 45 ] && [ "$1" -le 54 ]; then
+            echo ""
+        elif [ "$1" -ge 55 ] && [ "$1" -le 64 ]; then
+            echo ""
+        elif [ "$1" -ge 65 ] && [ "$1" -le 74 ]; then
+            echo ""
+        elif [ "$1" -ge 75 ] && [ "$1" -le 84 ]; then
+            echo ""
+        elif [ "$1" -ge 85 ] && [ "$1" -le 94 ]; then
+            echo ""
+        elif [ "$1" -ge 95 ] && [ "$1" -le 100 ]; then
+            echo ""
+        else 
+            echo "uhoh"
+        fi
+    fi
+        
+}
+
+for bat in /sys/class/power_supply/BAT*; do 
+    if [[ $(cat $bat/status) = 'Discharging' ]]; then
+        is_battery_charging='no'
+    else
+        is_battery_charging='indeed'
+    fi
+
+    cpcy=$(cat $bat/capacity)
+
+    symbol=$(get_symbol $cpcy $is_battery_charging)
+
+    echo "$symbol $cpcy%" | tr '\n' ' ';
+done
