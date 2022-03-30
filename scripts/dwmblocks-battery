@@ -36,7 +36,8 @@ get_symbol() {
 }
 
 for bat in /sys/class/power_supply/BAT*; do 
-    if [[ $(cat $bat/status) = 'Discharging' ]]; then
+    stt="$(cat $bat/status)"
+    if [[ $stt = 'Discharging' || $stt = 'Not charging' ]]; then
         is_battery_charging='no'
     else
         is_battery_charging='indeed'
