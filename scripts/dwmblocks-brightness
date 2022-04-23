@@ -1,0 +1,4 @@
+#!/bin/sh
+
+v=$(xbacklight -get)
+echo ${v%%.*}
