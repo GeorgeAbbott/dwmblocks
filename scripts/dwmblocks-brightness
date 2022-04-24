@@ -1,4 +1,4 @@
 #!/bin/sh
 
 v=$(xbacklight -get)
-echo ${v%%.*}
+echo "BRG ${v%%.*}%"

@@ -1,7 +1,7 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	   /*Icon*/                 /*Command*/                                                   /*Update Interval*/	/*Update Signal*/
-    {  "",                      "dwmblocks-brightness",                                          3600,               0                  },  
+    {  "",                      "dwmblocks-brightness",                                          0,                  2                 },  
     {  "",                      "dwmblocks-battery",                                             2,                  0                  },
     {  " ",                    "mpc current -f %title%",                                        1,                  0                  },
 	{  " ",                    "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",       20,                 0                  },
